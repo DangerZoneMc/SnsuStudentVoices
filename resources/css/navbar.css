@@ -1,0 +1,138 @@
+/* ========== Web 3.0 Modern Navbar Styles ========== */
+
+/* Smooth Glassmorphism Effect */
+nav {
+    background: rgba(66, 255, 132, 0.2); /* Transparent green */
+    backdrop-filter: blur(15px); /* Blur effect */
+    border-radius: 12px;
+    padding: 12px 20px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1800px;
+    z-index: 1000;
+    box-shadow: 0px 5px 15px rgba(66, 255, 132, 0.3);
+}
+
+/* Modern Navbar Links */
+nav a {
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background: rgba(66, 255, 132, 0.3); /* Slight highlight */
+    box-shadow: 0px 4px 10px rgba(66, 255, 132, 0.4);
+}
+
+/* Neumorphic Dropdown Menu */
+.dropdown-menu {
+    background: linear-gradient(135deg, #42ff84, #28d167);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0px 5px 15px rgba(66, 255, 132, 0.3);
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(66, 255, 132, 0.5);
+    border-radius: 8px;
+}
+
+/* 3D Neumorphic Buttons */
+button {
+    background: linear-gradient(135deg, #42ff84, #28d167);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 4px 4px 10px rgba(66, 255, 132, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(66, 255, 132, 0.4);
+}
+
+/* Floating Header */
+header {
+    background: rgba(66, 255, 132, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0px 5px 15px rgba(66, 255, 132, 0.3);
+}
+
+/* Main Content Background */
+main {
+    background: rgba(230, 255, 238, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 80vh;
+    margin-top: 80px;
+    box-shadow: 0px 10px 20px rgba(66, 255, 132, 0.3);
+}
+
+/* Card Containers with Glassmorphism */
+.box {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(66, 255, 132, 0.3);
+    transition: all 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(66, 255, 132, 0.5);
+}
+
+/* Profile Image */
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(66, 255, 132, 0.5);
+    box-shadow: 0px 5px 10px rgba(66, 255, 132, 0.3);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    nav {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+    }
+}
