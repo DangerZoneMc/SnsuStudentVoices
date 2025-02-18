@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('message');
+            $table->string('media_url')->nullable();
+            $table->string('media_type')->nullable();
             $table->timestamps();
         });
     }

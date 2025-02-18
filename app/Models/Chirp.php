@@ -13,6 +13,8 @@ class Chirp extends Model
 
     protected $fillable = [
         'message',
+        'media_url',
+        'media_type'
     ];
 
     protected $dispatchesEvents = [
@@ -25,13 +27,12 @@ class Chirp extends Model
     }
 
     public function likes()
-{
-    return $this->hasMany(Like::class);
-}
+    {
+        return $this->hasMany(Like::class);
+    }
 
-public function comments()
-{
-    return $this->hasMany(Comment::class);
-}
-
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
