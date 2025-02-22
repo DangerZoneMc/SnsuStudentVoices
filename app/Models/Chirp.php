@@ -14,7 +14,8 @@ class Chirp extends Model
     protected $fillable = [
         'message',
         'media_url',
-        'media_type'
+        'media_type',
+        'department'
     ];
 
     protected $dispatchesEvents = [

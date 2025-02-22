@@ -58,4 +58,21 @@ public function comments()
     return $this->hasMany(Comment::class);
 }
 
+public function organizations()
+{
+    return $this->hasMany(Organization::class);
+}
+
+public function announcements()
+{
+    return $this->hasMany(Announcement::class);
+}
+
+public function isAdmin()
+{
+    return in_array($this->email, [
+        'admin@example.com', // Add admin emails here
+    ]);
+}
+
 }

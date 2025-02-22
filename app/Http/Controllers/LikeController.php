@@ -10,23 +10,21 @@ class LikeController extends Controller
 {
     public function store(Request $request, Chirp $chirp)
     {
-        $user = auth()->user();
+        $like = $chirp->likes()->where('user_id', auth()->id())->first();
 
-        // Check if user already liked the chirp
-        $existingLike = Like::where('user_id', $user->id)
-                            ->where('chirp_id', $chirp->id)
-                            ->first();
-
-        if ($existingLike) {
-            $existingLike->delete(); // Unlike if already liked
-            return back()->with('success', 'Like removed');
+        if ($like) {
+            $like->delete();
+            $isLiked = false;
+        } else {
+            $chirp->likes()->create([
+                'user_id' => auth()->id(),
+            ]);
+            $isLiked = true;
         }
 
-        Like::create([
-            'user_id' => $user->id,
-            'chirp_id' => $chirp->id,
+        return back()->with([
+            'isLiked' => $isLiked,
+            'likes' => $chirp->likes()->count(),
         ]);
-
-        return back()->with('success', 'Liked successfully');
     }
 }

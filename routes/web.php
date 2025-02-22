@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +40,31 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('chirps', ChirpController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::post('/chirps/{chirp}/like', [LikeController::class, 'store'])->name('chirps.like');
-    Route::post('/chirps/{chirp}/comment', [CommentController::class, 'store'])->name('chirps.comment');
+    Route::get('/chirps/ceit', [ChirpController::class, 'ceit'])->name('chirps.ceit');
+    Route::get('/chirps/cas', [ChirpController::class, 'cas'])->name('chirps.cas');
+    Route::get('/chirps/cte', [ChirpController::class, 'cte'])->name('chirps.cte');
+    Route::get('/chirps/cot', [ChirpController::class, 'cot'])->name('chirps.cot');
+
+    Route::post('/chirps/{chirp}/like', [LikeController::class, 'store'])
+        ->name('chirps.like');
+        
+    Route::post('/chirps/{chirp}/comments', [CommentController::class, 'store'])
+        ->name('chirps.comments.store');
+    Route::patch('/chirps/{chirp}/comments/{comment}', [CommentController::class, 'update'])
+        ->name('chirps.comments.update');
+    Route::delete('/chirps/{chirp}/comments/{comment}', [CommentController::class, 'destroy'])
+        ->name('chirps.comments.destroy');
+
+    Route::get('/organizations', [OrganizationController::class, 'index'])
+        ->name('organizations');
+
+    Route::post('/announcements', [AnnouncementController::class, 'store'])
+        ->name('announcements.store')
+        ->middleware('can:create,App\Models\Announcement');
+});
 
 require __DIR__.'/auth.php';

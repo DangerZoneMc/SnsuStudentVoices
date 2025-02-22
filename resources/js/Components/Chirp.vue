@@ -44,6 +44,16 @@ const isVideo = (media) => {
     return media?.type?.startsWith('video/');
 };
 
+const getMediaUrl = (url) => {
+    if (!url) return null;
+    // If the URL starts with 'http' or 'https', return it as is
+    if (url.startsWith('http')) {
+        return url;
+    }
+    // Otherwise, prepend the base URL
+    return `${window.location.origin}${url}`;
+};
+
 const removeMedia = () => {
     form.media = null;
     if (previewUrl.value) {
@@ -142,14 +152,14 @@ const removeMedia = () => {
                 <div v-if="chirp.media_url" class="mt-3">
                     <img
                         v-if="isImage(chirp.media_type)"
-                        :src="chirp.media_url"
+                        :src="getMediaUrl(chirp.media_url)"
                         alt="Chirp media"
                         class="rounded-lg max-h-96 object-contain"
                         @error="(e) => console.error('Image failed to load:', e)"
                     />
                     <video
                         v-else-if="isVideo(chirp.media_type)"
-                        :src="chirp.media_url"
+                        :src="getMediaUrl(chirp.media_url)"
                         controls
                         class="rounded-lg max-h-96 w-full"
                     >
@@ -159,7 +169,11 @@ const removeMedia = () => {
             </div>
 
             <div class="flex items-center mt-2">
-                <LikeButton :chirp-id="chirp.id" :likes="chirp.likes" :isLiked="chirp.isLiked" />
+                <LikeButton 
+                    :chirp-id="chirp.id" 
+                    :likes="chirp.likes.length"
+                    :is-liked="chirp.likes.some(like => like.user_id === $page.props.auth.user.id)"
+                />
             </div>
             <CommentSection :chirp-id="chirp.id" :comments="chirp.comments" class="mt-4" />
         </div>
