@@ -113,6 +113,7 @@ const removeMedia = () => {
                         :src="previewUrl || chirp.media_url"
                         alt="Media preview"
                         class="rounded-lg max-h-96 object-contain"
+                        @error="(e) => e.target.src = '/path/to/fallback-image.png'"
                     />
                     <video
                         v-else-if="(previewUrl && isVideo(form.media)) || (!previewUrl && isVideo(chirp.media_type))"

@@ -46,7 +46,7 @@ const showingNavigationDropdown = ref(false);
                                 :active="route().current('chirps.index')"
                                 class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium"
                             >
-                                Chirps
+                                Home
                             </NavLink>
                         </div>
                     </div>

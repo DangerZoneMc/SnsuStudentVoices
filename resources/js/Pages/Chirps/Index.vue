@@ -71,6 +71,7 @@ const isVideo = (file) => {
                         :src="previewUrl"
                         alt="Upload preview"
                         class="rounded-lg max-h-96 object-contain"
+                        @error="(e) => e.target.src = '/path/to/fallback-image.png'"
                     />
                     <video
                         v-else-if="isVideo(form.media)"

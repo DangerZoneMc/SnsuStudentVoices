@@ -41,7 +41,7 @@ const closeModal = () => {
 </script>
 
 <template>
-    <div class="fixed right-0 top-16 h-screen w-64 bg-white shadow-lg p-4 overflow-y-auto">
+    <div class="fixed right-0 top-16 h-screen w-80 bg-white shadow-lg p-4 overflow-y-auto">
         <div class="mb-6">
             <h2 class="text-xl font-bold text-gray-900 mb-4">Announcements</h2>
             

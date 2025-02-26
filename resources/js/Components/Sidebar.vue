@@ -11,7 +11,7 @@ const navigation = [
 </script>
 
 <template>
-    <div class="flex flex-col w-32 bg-white h-screen px-1 py-4 border-r">
+    <div class="flex flex-col w-48 bg-white h-screen px-1 py-4 border-r">
         <h1 class="text-sm font-semibold text-center mb-3">Menu</h1>
         
         <nav class="space-y-1">
